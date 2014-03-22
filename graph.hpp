@@ -140,6 +140,7 @@ namespace dws
 			return max;
 		}
 		
+		
 	private:		
 		std::vector<VertexData> lists; // The data for vertex v is stored in map[v] index of this list
 		std::unordered_map<Vertex,std::size_t> map; 

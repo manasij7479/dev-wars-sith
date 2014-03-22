@@ -3,7 +3,6 @@
 
 #include "graph.hpp"
 #include "graphutils.hpp"
-#include "analyzer.hpp"
 #include <algorithm>
 #include <iostream>
 #include <unordered_map>
@@ -13,9 +12,11 @@ namespace dws
 	class ColoredGraph
 	{
 	public:
-		ColoredGraph(RebelGraph g_,Analyzer& an):g(g_)
+		ColoredGraph(RebelGraph g_):g(g_)
 		{
-			auto vlist=an.getBases();
+			std::vector<std::string> vlist;
+			for(auto x=g.begin();x!=g.end();++x)
+				vlist.push_back(x->v);
 			
 			chromatic_number=g.size();
 			for(int i=1;i<=g.size();++i)
@@ -31,34 +32,40 @@ namespace dws
 		{
 			std::unordered_map<std::string,int> newmap;
 			for(auto v:vlist)
+			{
 				newmap[v]=0;
+				//std::cout<<v<<' ';
+			}
+			//std::cout<<std::endl;
 			int used=0;
-			int flag;
+			
 			for(auto v:vlist)
 			{
 				for(int i=0;i<colors.size();++i)
 				{
-					for(auto x=g.nbegin(v);x!=g.nbegin(v);++x)
+					int flag=1;
+					for(auto x=g.nbegin(v);x!=g.nend(v);++x)
 					{
 						auto w=x->first;
+						//std::cout<<w<<std::endl;
 						if(newmap[w]==colors[i])
 						{
 							flag=0;
 							break;
 						}
-						else flag=1;
 					}
 					if(flag==1)
 					{
 						newmap[v]=colors[i];
-						if(i>used)
-							used=i;
+						if(i>=used)///FIXME
+							used++;
 						break;
 					}
 				}
 			}
 			if(used<chromatic_number)
 			{
+// 				std::cout<<chromatic_number;
 				chromatic_number=used;
 				colormap=newmap;
 				best=vlist;
@@ -66,6 +73,7 @@ namespace dws
 		}
 		void display()
 		{
+// 			std::cout<<chromatic_number<<std::endl;
 			for(auto v:best)
 			{
 				std::cout<<v<<':'<<colormap[v]<<std::endl;

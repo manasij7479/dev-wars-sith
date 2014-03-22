@@ -4,8 +4,10 @@
 #include "graph.hpp"
 #include "graphutils.hpp"
 #include "graphcolor.hpp"
+#include <stdio.h>
 int main()
 {
+	freopen("bar","r",stdin);
 	//dws::Cipher c=dws::generateRandomCipher();
 	std::string line;
 	std::string input;
@@ -30,6 +32,7 @@ int main()
 	
 	
 	return 0;
+	
 	
 	
 	

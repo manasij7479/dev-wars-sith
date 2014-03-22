@@ -42,10 +42,9 @@ namespace dws
 	class Analyzer
 	{
 	public:
-		Analyzer(std::string input):s(input)
+		Analyzer(std::string input,bool decrypted=false):s(input),done(false)
 		{
 			std::istringstream in(s);
-			std::string line,blank;
 			
 			std::string nu;
 			std::getline(in,nu);
@@ -55,6 +54,12 @@ namespace dws
 			std::getline(in,msg);
 			news=sentences(msg);
 			
+			if(decrypted)
+				final_stage(in);
+		}
+		void final_stage(std::istringstream& in)
+		{
+			std::string line,blank;
 			std::getline(in,blank);
 			//assert(blank=="");
 			
@@ -87,6 +92,7 @@ namespace dws
 					break;
 				else messages.push_back(line);
 			}
+			done=true;
 		}
 		Cipher getCipher()
 		{
@@ -106,19 +112,21 @@ namespace dws
 			
 			if(m[0]==' ')
 				m=m.substr(1,m.length()-1);
-			
-			
-			
+
 			c.add(k,m);
 			
 			return c;
 		}
+		std::vector<std::string> getBases(){return bases;};
+		std::vector<std::pair<std::string,std::string>> getChannels(){return channels;};
 	private:
 		std::string s;
 		std::vector<std::string> news;
 		std::vector<std::string> bases;
 		std::vector<std::pair<std::string,std::string>> channels;
 		std::vector<std::string> messages;
+		
+		bool done;
 	};
 }
 #endif

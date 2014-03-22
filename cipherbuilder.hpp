@@ -2,8 +2,6 @@
 #define DWS_CIPHER_BUILDER_HPP
 
 #include "cipher.hpp"
-#include <sstream>
-#include <cassert>
 namespace dws
 {
 	class CipherBuilder

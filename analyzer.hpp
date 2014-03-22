@@ -2,6 +2,8 @@
 #define DWS_ANALYZER_HPP
 #include <iostream>
 #include <cassert>
+#include <sstream>
+
 namespace dws 
 {
 	std::vector<std::string> sentences(std::string s)
@@ -25,7 +27,7 @@ namespace dws
 	class Analyzer
 	{
 	public:
-		Analyzer(std::string in):s(in)
+		Analyzer(std::string input):s(input)
 		{
 			std::istringstream in(s);
 			std::string line,blank;
@@ -71,9 +73,7 @@ namespace dws
 				else messages.push_back(line);
 			}
 		}
-		
-		
-	private:
+	
 		std::string s;
 		std::vector<std::string> news;
 		std::vector<std::string> bases;

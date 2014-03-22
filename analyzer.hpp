@@ -1,7 +1,7 @@
 #ifndef DWS_ANALYZER_HPP
 #define DWS_ANALYZER_HPP
 #include <iostream>
-#include <cassert>
+#include <stdexcept>
 #include <sstream>
 #include "cipher.hpp"
 
@@ -24,6 +24,20 @@ namespace dws
 		return p;
 	}
 	
+	bool analogous(std::string a,std::string b)
+	{
+		std::istringstream x(a),y(b);
+		std::string x_,y_;
+		while(x>>x_ && y>>y_)
+			if(x_.length()!=y_.length())
+				return false;
+		return true;
+	}
+	bool consistent(std::string a,std::string b)
+	{
+		///TODO
+		return true;
+	}
 	
 	class Analyzer
 	{
@@ -42,7 +56,7 @@ namespace dws
 			news=sentences(msg);
 			
 			std::getline(in,blank);
-			assert(blank=="");
+			//assert(blank=="");
 			
 			std::string rb;
 			std::getline(in,rb);
@@ -77,10 +91,25 @@ namespace dws
 		Cipher getCipher()
 		{
 			Cipher c;
+			std::string k="The quick brown fox jumps over the lazy dog.";
+			std::string m;
 			for(auto& s:news)
 			{
-				
+				if(analogous(s,k))
+				{
+					m=s;
+					break;
+				}
 			}
+			if(m=="")
+				throw std::runtime_error("No match.");
+			
+			if(m[0]==' ')
+				m=m.substr(1,m.length()-1);
+			
+			
+			
+			c.add(k,m);
 			
 			return c;
 		}

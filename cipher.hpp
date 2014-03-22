@@ -26,6 +26,9 @@ namespace dws
 		{
 			a=std::tolower(a);
 			b=std::tolower(b);
+			
+			if(!std::isalpha(a))
+				return;
 			if(known[a-'a'])
 			{
 				if(map[a-'a']==b)

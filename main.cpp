@@ -1,5 +1,7 @@
 #include<iostream>
+#include "cipher.hpp"
 int main()
 {
-	std::cout<<"Hello world";
+	dws::Cipher c=dws::generateRandomCipher();
+	std::cout<<c.invert().apply(c.apply("Manasij"));
 }

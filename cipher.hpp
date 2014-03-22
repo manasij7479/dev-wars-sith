@@ -4,10 +4,12 @@
 #include <stdexcept>
 #include <algorithm>
 #include <cctype>
+
 namespace dws
 {
 	class Cipher
 	{
+	public:
 		Cipher()
 		{
 			std::fill(map,map+26,0);
@@ -22,6 +24,8 @@ namespace dws
 		}
 		void add(char a,char b)
 		{
+			a=std::tolower(a);
+			b=std::tolower(b);
 			if(known[a-'a'])
 			{
 				if(map[a-'a']==b)
@@ -34,9 +38,7 @@ namespace dws
 		}
 		void add(std::string a,std::string b)
 		{
-			a=std::tolower(a);
-			b=std::tolower(b);
-			for(for int i=0;i<a.length();++i)
+			for(int i=0;i<a.length();++i)
 				add(a[i],b[i]);
 		}
 		Cipher invert()
@@ -66,8 +68,19 @@ namespace dws
 		char map[26];
 		bool known[26];
 		int numknown;
-		
 	};
+	
+	Cipher generateRandomCipher()
+	{
+		Cipher c;
+		char arr[26];
+		for(int i=0;i<26;++i)
+			arr[i]='a'+i;
+		std::random_shuffle(arr,arr+26);
+		
+		return Cipher(arr);
+	}
+	
 	
 }
 #endif

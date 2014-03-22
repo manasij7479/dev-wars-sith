@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cassert>
 #include <sstream>
+#include "cipher.hpp"
 
 namespace dws 
 {
@@ -73,7 +74,17 @@ namespace dws
 				else messages.push_back(line);
 			}
 		}
-	
+		Cipher getCipher()
+		{
+			Cipher c;
+			for(auto& s:news)
+			{
+				
+			}
+			
+			return c;
+		}
+	private:
 		std::string s;
 		std::vector<std::string> news;
 		std::vector<std::string> bases;

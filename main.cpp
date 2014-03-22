@@ -3,6 +3,7 @@
 #include "analyzer.hpp"
 #include "graph.hpp"
 #include "graphutils.hpp"
+#include "graphcolor.hpp"
 int main()
 {
 	//dws::Cipher c=dws::generateRandomCipher();
@@ -23,7 +24,11 @@ int main()
 	auto g=dws::makeGraph(an_);
 	
 	dws::darthGraphDisplay(g,std::cout);
-	std::cout<<g.maxDegree();
+	dws::ColoredGraph g_(g,an_);
+	
+	g_.display();
+	
+	
 	return 0;
 	
 	

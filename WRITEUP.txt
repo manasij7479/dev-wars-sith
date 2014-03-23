@@ -22,13 +22,17 @@ b) Design Decisions:
 		Cipher is a simple module which applies the substitution cipher to any text.
 		Since this is easily invertible, it also has an option to apply the substituion in the opposite way.
 		
-	2.Analyzer:
+	2.Text Analysis:
 		This module analyzes the input in two phases:
 		In the first phase it extracts the offset of the key sentence from the "News Update" section, thus
 		allowing the user to decrypt the text.
 		The next phase operates on the plaintext output of the decryption operation.
 		From this phase, we obtain the names of the unfortunate Rebel Bases, information about the
 		communication channels and the messages passed to each Rebel Base.
+		
+		Another important function of this module is reconstructing the altered message and
+		applying the inverted cipher to get ciphertext which can not be
+		distinguished from an authentic message.
 		
 	3.Graph:
 		This is the most important module in the application.

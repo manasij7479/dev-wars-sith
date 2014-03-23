@@ -12,12 +12,14 @@ The available C++ compiler must support C++11.
 GCC 4.6.x will work, but 4.8+ is recommended.  
 Recent clang versions will also be able to compile it.  
 
-
 cd dev-wars-sith #root dir of the project  
 mkdir build #Create a directory for the executable  
 cd build  
 cmake ..  
 make  
+
+To execute, in the build directory:
+./dev-wars-sith #for interactive mode
 
 Operation:  
 There are two modes of operation:  

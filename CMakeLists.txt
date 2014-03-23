@@ -7,7 +7,7 @@ include_directories( ${CMAKE_CURRENT_BINARY_DIR})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -g")
 
-set(dws_SRCS main.cpp)
+set(dws_SRCS main.cpp shell.cpp cipher.cpp analyzer.cpp)
 
 add_executable(dev-wars-sith ${dws_SRCS})
 

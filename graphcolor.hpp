@@ -2,7 +2,6 @@
 #define DWS_GRAPH_COLOR_HPP
 
 #include "graph.hpp"
-#include "graphutils.hpp"
 #include <algorithm>
 #include <iostream>
 #include <unordered_map>
@@ -23,7 +22,7 @@ namespace dws
 			for(int i=1;i<=g.size();++i)
 				colors.push_back(i);
 			
-			std::sort(vlist.begin(),vlist.end());			
+			std::sort(vlist.begin(),vlist.end());
 			do
 			{
 				update(vlist);

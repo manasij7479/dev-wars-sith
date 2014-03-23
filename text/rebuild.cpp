@@ -5,17 +5,25 @@
 
 namespace dws
 {
-	std::string messages[]=
-	{
-		"Dummy",
-		"Attack",
-		"Retreat",
-		"Stay",
-		"Self Destruct",
-		"Hide",
-		"Repair",
-	};
 	
+	std::string getMessages(int i)
+	{
+		std::vector<std::string> messages=
+		{
+			"Dummy",
+			"Attack",
+			"Retreat",
+			"Stay",
+			"Self Destruct",
+			"Hide",
+			"Repair",
+		};
+		if(i<0)
+			return "";
+		if(i<messages.size())
+			return messages[i];
+		else return std::string("Message "+std::to_string(i));
+	}
 	std::string scase(std::string x)
 	{
 		if(x[0]==' ')
@@ -48,7 +56,7 @@ namespace dws
 		out<<"\n";
 		out<<"Messages\n";
 		for(auto v:an.getBases())
-			out<<messages[g.getMap()[v]]<<std::endl;
+			out<<getMessages(g.getMap()[v])<<std::endl;
 		return out.str();
 	}
 }

@@ -39,4 +39,8 @@ b) Design Decisions:
 		Since, this is an well known NP-complete problem, we just iteratively try colouring all vertex orderings, 
 		and then choose the best one, i.e. the one with the least number of colours.
 	4.Shell:
-		The Shell drives the other modules and provides the User Interface.
+		The Shell drives the other modules and provides the User Interface.  
+
+c) Testing:
+	The application was tested with some randomly generated messages fitting the criteria in the question.
+	Due to time constraints, it was not possible to set up a detailed unit testing framework.

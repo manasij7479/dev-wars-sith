@@ -139,13 +139,27 @@ namespace dws
 			}
 			return max;
 		}
-		
+		void display()
+		{
+			for(auto x = begin();x!=end();++x)
+			{
+				std::cout<<"["<<x->v<<"]->";
+				for(auto y = nbegin(x->v);y!=nend(x->v);++y)
+				{
+					std::cout<<"("<< y->first<<","<< y->second<<"),";
+				}
+				std::cout<<"***\n";
+			}
+		}
 		
 	private:		
 		std::vector<VertexData> lists; // The data for vertex v is stored in map[v] index of this list
 		std::unordered_map<Vertex,std::size_t> map; 
 		
 	};
-
+	
+	typedef AdjacencyList<std::string,bool,SimpleUndirectedGraph> RebelGraph;
+	
+	
 }
 #endif

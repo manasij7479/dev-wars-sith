@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <sstream>
 #include "cipher.hpp"
-
+#include "graph.hpp"
 namespace dws 
 {
 	std::vector<std::string> sentences(std::string s)
@@ -42,6 +42,7 @@ namespace dws
 	class Analyzer
 	{
 	public:
+		Analyzer(){}
 		Analyzer(std::string input,bool decrypted=false):s(input),done(false)
 		{
 			std::istringstream in(s);
@@ -117,6 +118,21 @@ namespace dws
 			
 			return c;
 		}
+		RebelGraph getGraph()
+		{
+			auto vlist=getBases();
+			auto elist=getChannels();
+			RebelGraph rb;
+			
+			for(auto v:vlist)
+				rb.insertVertex(v);
+		
+			for(auto e:elist)
+				rb.insertEdge(e.first,e.second,true);
+		
+			return rb;
+		}
+		
 		std::vector<std::string> getBases(){return bases;};
 		std::vector<std::pair<std::string,std::string>> getChannels(){return channels;};
 		std::vector<std::string> getNews(){return news;};

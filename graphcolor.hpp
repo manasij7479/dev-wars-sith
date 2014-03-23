@@ -12,6 +12,7 @@ namespace dws
 	class ColoredGraph
 	{
 	public:
+		ColoredGraph(){}
 		ColoredGraph(RebelGraph g_):g(g_)
 		{
 			std::vector<std::string> vlist;

@@ -54,7 +54,7 @@ namespace dws
 		std::ifstream in("../shell/ascii.txt");
 		if(in)
 			std::cout<<in.rdbuf();
-		std::cout<<"\n\t\t    ***Death Star Control System***\n";
+		std::cout<<"\n\t\t  ***Imperial Holo Systems Control***\n";
 	}
 	bool prompt()
 	{

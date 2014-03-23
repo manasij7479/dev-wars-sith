@@ -30,8 +30,11 @@ There are two modes of operation:
   4. color: Shows the same graph, but numbers(traditionally called colors) are appended to them in such a way that no two adjacent base has the same color.
   5. rebuild (optional filename): Reconstructs the message in such a way that no two adjacent rebel bases recieve the same message. If a filename is provided, the text is re-encrypted and saved in the given file.
   6. help: Displays this message
-  7. quit: Ends the application
-
+  7. quit: Ends the application  
+  Since the key words were carefully chosen to have unique first characters, 
+  you can skip the rest of the string for brevity.  
+  For example, "l a.txt" loads the file "a.txt"
+    
 
 2. Non-interactive:  
   This is mainly for testing purposes and can be used by giving the name of the input file as a command line argument.   The program dumps all its output into stdout for debugging purposes.

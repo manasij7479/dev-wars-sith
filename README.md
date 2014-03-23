@@ -1,3 +1,4 @@
-dev-wars-sith Instruo 2014
-============= ============
+dev-wars-sith
+=============
 
+Code for 'dev-wars' @ Instruo 2014 

@@ -1,28 +1,29 @@
 dev-wars-sith
 =============
 
-Code for 'dev-wars' @ Instruo 2014 
-Problem: http://instruo.in/dw-sith.html
+Code for 'dev-wars' @ Instruo 2014  
+Problem: http://instruo.in/dw-sith.html  
 
 Compilation:
 
-The build system used is cmake.
-The given instructions assume an unix based OS.
-The available C++ compiler must support C++11.
-GCC 4.6.x will work, but 4.8+ is recommended.
-Recent clang versions will also be able to compile it.
+The build system used is cmake.  
+The given instructions assume an unix based OS.  
+The available C++ compiler must support C++11.  
+GCC 4.6.x will work, but 4.8+ is recommended.  
+Recent clang versions will also be able to compile it.  
 
-cd dev-wars-sith #root dir of the project
-mkdir build #Create a directory for the executable
-cd build
-cmake ..
-make
 
-Operation:
-There are two modes of operation:
-1. Interactive:
-  This mode provides a prompt the user is supposed to use.
-  The operations supported are:
+cd dev-wars-sith #root dir of the project  
+mkdir build #Create a directory for the executable  
+cd build  
+cmake ..  
+make  
+
+Operation:  
+There are two modes of operation:  
+1. Interactive (./dev-wars-sith ) :  
+  This mode provides a prompt the user is supposed to use.  
+  The operations supported are:  
   1. load filename : File 'filename' containing the encrypted text is loaded.
   2. decrypt: Decrypts the file and displays the plaintext.
   3. graph: Shows a graph denoting the communication channels between the rebel bases.
@@ -31,6 +32,7 @@ There are two modes of operation:
   6. help: Displays this message
   7. quit: Ends the application
 
-2. Non-interactive:
-  This is mainly for testing purposes and can be used by giving the name of the input file as a command line argument. The program dumps all its output into stdout for debugging purposes.
+
+2. Non-interactive:  
+  This is mainly for testing purposes and can be used by giving the name of the input file as a command line argument.   The program dumps all its output into stdout for debugging purposes.
 

@@ -1,0 +1,42 @@
+Dev Wars: Imperial Forces
+
+a) Description:
+	A given text file ( intercepted from the rebel bases!) is encoded by an unknown substitution cipher.
+	
+	The structure of the file is known however.
+	It contains four whitespace separated sections, with the headers:
+	1. “News Update”
+	2. “Rebel Bases”
+	3. “Communication Channels”
+	4. “Messages”
+	
+	It is also known that the "News Update" section contains the sentence:
+	"The quick brown fox jumps over the lazy dog."...(thanks to a brave imperial spy!)
+	
+	This sentence has sufficient information to revert the encryption and study the message.
+	It is also possible to alter the message and re-encrypt the text without the rebels being any wiser.
+	
+b) Design Decisions: 
+	The application is broken into the following modules:
+	1.Cipher: 
+		Cipher is a simple module which applies the substitution cipher to any text.
+		Since this is easily invertible, it also has an option to apply the substituion in the opposite way.
+		
+	2.Analyzer:
+		This module analyzes the input in two phases:
+		In the first phase it extracts the offset of the key sentence from the "News Update" section, thus
+		allowing the user to decrypt the text.
+		The next phase operates on the plaintext output of the decryption operation.
+		From this phase, we obtain the names of the unfortunate Rebel Bases, information about the
+		communication channels and the messages passed to each Rebel Base.
+		
+	3.Graph:
+		This is the most important module in the application.
+		It implements a templated Adjacency List which can store an undirected graph.
+		It supports all the required graph operations.
+		The problem of altering the messages can be expressed as a graph coloring problem.
+		Hence, this module also enables the user to color the constructe graph with the minimal number of colours.
+		Since, this is an well known NP-complete problem, we just iteratively try colouring all vertex orderings, 
+		and then choose the best one, i.e. the one with the least number of colours.
+	4.Shell:
+		The Shell drives the other modules and provides the User Interface.

@@ -24,10 +24,9 @@ namespace dws
 		Analyzer an;
 		RebelGraph g;
 		ColoredGraph cg;
-		
+		Cipher c;
 		bool interactive;
-		
-		
+
 	};
 }
 

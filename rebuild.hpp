@@ -16,7 +16,7 @@ namespace dws
 		"Stay",
 		"Self Destruct",
 		"Hide",
-		"Repair"
+		"Repair",
 	};
 	std::string scase(std::string x)
 	{
@@ -26,7 +26,7 @@ namespace dws
 			x[0]=std::toupper(x[0]);
 		return x;
 	}
-	std::string rebuildMessage(Analyzer& an,ColoredGraph& g)
+	std::string rebuildMessage(Analyzer& an,ColoredGraph& g,bool includecols=true)
 	{
 		std::ostringstream out;
 		out<<"News Update\n";
@@ -40,9 +40,13 @@ namespace dws
 			out<<scase(x)<<"\n";
 		out<<"\n";
 		out<<"Communication Channels\n";
-		for(auto p:an.getChannels())
-			out<<scase(p.first)<<'('<<g.getMap()[p.first]<<") "
-			<<scase(p.second)<<'('<<g.getMap()[p.second]<<")\n";
+		if(includecols)
+			for(auto p:an.getChannels())
+				out<<scase(p.first)<<'('<<g.getMap()[p.first]<<") "
+				<<scase(p.second)<<'('<<g.getMap()[p.second]<<")\n";
+		else
+			for(auto p:an.getChannels())
+				out<<scase(p.first)<<' '<<scase(p.second)<<"\n";
 		out<<"\n";
 		out<<"Messages\n";
 		for(auto v:an.getBases())

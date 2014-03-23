@@ -1,10 +1,9 @@
 #ifndef DWS_ANALYZER_HPP
 #define DWS_ANALYZER_HPP
-#include <iostream>
-#include <stdexcept>
-#include <sstream>
+
 #include "cipher.hpp"
-#include "graph.hpp"
+#include "../graph/graph.hpp"
+
 namespace dws 
 {
 	

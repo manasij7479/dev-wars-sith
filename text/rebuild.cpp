@@ -1,11 +1,8 @@
-#ifndef DWS_REBUILD_HPP
-#define DWS_REBUILD_HPP
-#include "graph.hpp"
-#include "graphcolor.hpp"
-#include "cipher.hpp"
-#include "analyzer.hpp"
+#include "rebuild.hpp"
 #include <sstream>
 #include <cctype>
+#include "cipher.hpp"
+
 namespace dws
 {
 	std::string messages[]=
@@ -18,6 +15,7 @@ namespace dws
 		"Hide",
 		"Repair",
 	};
+	
 	std::string scase(std::string x)
 	{
 		if(x[0]==' ')
@@ -26,7 +24,7 @@ namespace dws
 			x[0]=std::toupper(x[0]);
 		return x;
 	}
-	std::string rebuildMessage(Analyzer& an,ColoredGraph& g,bool includecols=true)
+	std::string rebuildMessage(Analyzer& an,ColoredGraph& g,bool includecols)
 	{
 		std::ostringstream out;
 		out<<"News Update\n";
@@ -54,6 +52,3 @@ namespace dws
 		return out.str();
 	}
 }
-
-
-#endif

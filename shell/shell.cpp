@@ -3,8 +3,8 @@
 #include <iostream>
 #include <stdexcept>
 #include <fstream>
-
-#include "rebuild.hpp"
+#include <sstream>
+#include "../text/rebuild.hpp"
 
 
 namespace dws
@@ -36,11 +36,25 @@ namespace dws
 	
 	void display_help()
 	{
-		std::cout<<"Help text goes here.\n";
+		std::cout<<
+"The operations supported are:  \n\
+  1. load filename : File 'filename' containing the encrypted text is loaded.\n\
+  2. decrypt: Decrypts the file and displays the plaintext.\n\
+  3. graph: Shows a graph denoting the communication channels between the rebel bases.\n\
+  4. color: Shows the same graph, but numbers(traditionally called colors) are appended\n\
+  to them in such a way that no two adjacent base has the same color.\n\
+  5. rebuild (optional filename): Reconstructs the message in such a way \n\
+  that no two adjacent rebel bases recieve the same message.\n\
+  If a filename is provided, the text is re-encrypted and saved in the given file.\n\
+  6. help: Displays this message \n\
+  7. quit: Ends the application\n";
 	}
 	void display_ascii_art()
 	{
-		std::cout<<"Init-ascii art goes here\n";
+		std::ifstream in("../shell/ascii.txt");
+		if(in)
+			std::cout<<in.rdbuf();
+		std::cout<<"\n\t\t    ***Death Star Control System***\n";
 	}
 	bool prompt()
 	{
@@ -67,16 +81,11 @@ namespace dws
 	{
 		original_data=fileInput(current_file_name);
 		generate();
-		//decrypted_data=decrypt(original_data);
-		std::cout<<decrypted_data;
-		//an=Analyzer(decrypted_data,true);
-		//g=an.getGraph();
+		std::cout<<decrypted_data<<std::endl;
 		g.display();
-		//cg=ColoredGraph(g);
 		cg.display();
-		//final_data=rebuildMessage(an,cg);
-		std::cout<<final_data;
-		
+		std::cout<<final_data<<std::endl;
+		std::cout<<c.invert().apply(rebuildMessage(an,cg,false));
 	}
 	
 	int Shell::operator()()
@@ -101,7 +110,7 @@ namespace dws
 						
 						decrypted_data="";
 						final_data="";
-						
+						std::cout<<"File '"<<name<<"' loaded.\n";
 					}
 					if(input[0]=='d')
 					{

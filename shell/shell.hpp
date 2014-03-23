@@ -1,9 +1,9 @@
 #ifndef DWS_SHELL_HPP
 #define DWS_SHELL_HPP
 
-#include "analyzer.hpp"
-#include "graph.hpp"
-#include "graphcolor.hpp"
+#include "../text/analyzer.hpp"
+#include "../graph/graph.hpp"
+#include "../graph/graphcolor.hpp"
 
 namespace dws
 {

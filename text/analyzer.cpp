@@ -1,4 +1,7 @@
 #include "analyzer.hpp"
+#include <iostream>
+#include <stdexcept>
+#include <sstream>
 namespace dws
 {
 	std::vector<std::string> sentences(std::string s)

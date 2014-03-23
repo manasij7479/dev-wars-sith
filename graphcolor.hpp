@@ -84,6 +84,7 @@ namespace dws
 			}
 		}
 		std::unordered_map<std::string,int> getMap(){return colormap;}
+		RebelGraph getGraph(){return g;}
 	private:
 		RebelGraph g;
 		int chromatic_number;

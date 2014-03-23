@@ -1,9 +1,5 @@
 #include<iostream>
-#include "cipher.hpp"
-#include "analyzer.hpp"
-#include "graph.hpp"
-#include "graphutils.hpp"
-#include "graphcolor.hpp"
+
 #include "shell.hpp"
 int main(int argc,char** argv)
 {
@@ -34,6 +30,6 @@ int main(int argc,char** argv)
 // 	
 // 	return 0;
 // 	
-	dws::Shell shell;
-	return shell();
+	dws::Shell shell(argc,argv);
+	return 0;
 }

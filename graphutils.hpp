@@ -16,7 +16,7 @@ namespace dws
 			out<<"["<<x->v<<"]->";
 			for(auto y = g.nbegin(x->v);y!=g.nend(x->v);++y)
 			{
-				out<<"("<< y->first<<","<< y->second<<")->";
+				out<<"("<< y->first<<","<< y->second<<"),";
 			}
 			out<<"***\n";
 		}

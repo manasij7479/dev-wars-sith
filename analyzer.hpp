@@ -119,6 +119,7 @@ namespace dws
 		}
 		std::vector<std::string> getBases(){return bases;};
 		std::vector<std::pair<std::string,std::string>> getChannels(){return channels;};
+		std::vector<std::string> getNews(){return news;};
 	private:
 		std::string s;
 		std::vector<std::string> news;

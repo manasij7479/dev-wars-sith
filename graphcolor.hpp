@@ -73,12 +73,17 @@ namespace dws
 		}
 		void display()
 		{
-// 			std::cout<<chromatic_number<<std::endl;
-			for(auto v:best)
+			for(auto x = g.begin();x!=g.end();++x)
 			{
-				std::cout<<v<<':'<<colormap[v]<<std::endl;
+				std::cout<<"["<<x->v<<" @ "<<colormap[x->v]<<"]->";
+				for(auto y = g.nbegin(x->v);y!=g.nend(x->v);++y)
+				{
+					std::cout<<"("<< y->first<<" @ "<< colormap[y->first]<<"),";
+				}
+				std::cout<<"***\n";
 			}
 		}
+		std::unordered_map<std::string,int> getMap(){return colormap;}
 	private:
 		RebelGraph g;
 		int chromatic_number;

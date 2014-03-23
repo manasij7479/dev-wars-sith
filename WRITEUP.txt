@@ -35,7 +35,7 @@ b) Design Decisions:
 		It implements a templated Adjacency List which can store an undirected graph.
 		It supports all the required graph operations.
 		The problem of altering the messages can be expressed as a graph coloring problem.
-		Hence, this module also enables the user to color the constructe graph with the minimal number of colours.
+		Hence, this module also enables the user to color the constructed graph with the minimal number of colours.
 		Since, this is an well known NP-complete problem, we just iteratively try colouring all vertex orderings, 
 		and then choose the best one, i.e. the one with the least number of colours.
 	4.Shell:
